@@ -1,0 +1,4 @@
+PassengerEnabled On
+PassengerAppRoot /home/k/kot1138/qoin/public_html/Qoin/qoin
+PassengerPython /home/k/kot1138/qoin/public_html/venv/bin/python
+PassengerFriendlyErrorPages On
