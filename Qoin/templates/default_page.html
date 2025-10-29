@@ -1,32 +1,5 @@
-{% extends 'base.html' %}
-{% load static generals_tag i18n %}
-<!---title-->
-{% block title %}{{ seo_title }}{% endblock title %}
-{% block description %}{{ seo_description }}{% endblock description %}
-{% block propertytitle %}{% if seo_previev %}{{ seo_previev.url }} {% endif %} {% endblock propertytitle %}
-{% block propertydescription %}{{ seo_propertytitle }}{% endblock propertydescription %}
-{% block propertyimage %}{{ seo_propertydescription }}{% endblock propertyimage %}
-
-<!---head-->
-{% block head %}{% endblock head %}
+{% load static generals_tag %}
 {% block content %}
-<section class="page-title" style="background: url('{{banner}}'); margin-top:100px;">
-    <div class="page-title-container">
-        <div class="page-title-wrapper">
-            <div class="container">
-                <div class="row">
-                    <div class="col col-xs-12"><h2>{{seo_title}}</h2>
-                        <ol class="breadcrumb">
-                            <li><a href="{% url 'webmain:home' %}" previewlistener="true">{% trans 'Главная' %}</a></li>
-                            <li>»</li>
-                            <li>{{seo_title}}</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 <section class="contact-pg-contact-section section-padding">
     <div class="container">
         <div class="row">
@@ -35,4 +8,5 @@
     </div>
 </section>
 {% endblock content %}
+
 

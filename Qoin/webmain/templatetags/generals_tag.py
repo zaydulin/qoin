@@ -2,6 +2,9 @@ from django import template
 from webmain.models import SettingsGlobale, ContactPage, Pages
 
 register = template.Library()
+@register.simple_tag
+def get_settings_first():
+    return SettingsGlobale.objects.first()
 
 @register.simple_tag()
 def get_current_name():

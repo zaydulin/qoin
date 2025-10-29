@@ -1,516 +1,221 @@
 {% load static generals_tag %}
-<!DOCTYPE html>
-
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>main page</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap" />
-  <link rel="stylesheet" href="{% static 'site/css/index.css' %}" />
-</head>
-<body>
-<div class="main-container">
-  <div class="all">
-    <div class="ellipse"></div>
-    <div class="ellipse-1"></div>
-    <div class="ellipse-2"></div>
-    <div class="ellipse-3"></div>
-    <div class="ellipse-4"></div>
-    <div class="ellipse-5"></div>
-    <div class="img"></div>
-    <div class="top">
-      <div class="menu">
-        <div class="qoinplus-logo"></div>
-        <div class="menu-6">
-          <div class="group-2"><a href="{% url 'webmain:home' %}" class="home">Home</a></div>
-          <div class="box-2"><a href="{% url 'webmain:about' %}" class="about-us">About us</a></div>
-          <div class="box-3"><a href="{% url 'webmain:exchange' %}" class="exchange">Exchange</a></div>
-          <div class="wrapper-2"><a href="{% url 'webmain:aml' %}" class="aml-kyc">AML/KYC</a></div>
-          <div class="group-3"><a href="{% url 'webmain:contact' %}" class="contacts">Contacts</a></div>
-        </div>
-        <div class="button">
-          <a  href="{% url 'webmain:contact' %}" class="start-now">Start now</a>
-          <div class="right-arrow"></div>
-        </div>
-      </div>
-      <div class="cap-main">
-        <div class="frame">
-          <div class="chip">
-            <div class="vector"></div>
-            <span class="high-risk-acquiring">High risk acquiring</span>
-          </div>
-          <span class="others-refuse-approve"
-          >Others refuse?<br> We approve!</span
-          ><span class="unlimited-payments-acquiring"
-        >Unlimited payments with acquiring of any currencies.
-              We cover
-                the world!</span
-        >
-        </div>
-        <div class="button-7">
-          <span class="start-now-8">Start now</span>
-          <div class="right-arrow-9"></div>
-        </div>
-      </div>
-      <div class="brands">
-        <div class="frame-a">
-          <span class="our-partners">Our partners</span>
-          <div class="logo-partner">
-            <div class="frame-b"></div>
-            <div class="frame-c"></div>
-            <div class="frame-d"></div>
-            <div class="frame-e"></div>
-            <div class="frame-f"></div>
-          </div>
-        </div>
-      </div>
+{% block content %}
+<section class="promo promo--main">
+    <div class="promo__container container"><span class="promo__chip"><img src="{% static 'site/assets/img/icons/high-risk.svg' %}"
+                                                                           alt=""> High risk acquiring</span>
+        <h1 class="promo__heading heading heading--size-l">Others refuse?<br>We approve!</h1>
+        <p class="promo__text">Unlimited payments with acquiring of any currencies. We cover the world!</p><a
+                href="#" class="promo__button">Start now</a></div>
+    <div class="promo__decoration">
+        <div class="promo__decoration__card promo__decoration__card--orange card-decor card-decor--orange"></div>
+        <div class="promo__decoration__card promo__decoration__card--white card-decor card-decor--white"></div>
     </div>
-    <div class="bottom">
-      <div class="wrapper-4">
-        <div class="row">
-          <div class="card">
-            <div class="icons"></div>
-            <div class="content">
-                  <span class="fast-legal-transactions"
-                  >Fast and legal transactions in any payment systems (Visa,
-                    Master Card, etc.)</span
-                  >
-            </div>
-          </div>
-          <div class="line"></div>
-          <div class="card-10">
-            <div class="icons-11"></div>
-            <div class="content-12">
-                  <span class="terms-cooperation"
-                  >The terms of cooperation are determined based on your
-                    turnover and are most beneficial for you</span
-                  >
-            </div>
-          </div>
-          <div class="line-13"></div>
-          <div class="card-14">
-            <div class="icons-15"></div>
-            <div class="content-16">
-                  <span class="transparent-commissions"
-                  >Transparent commissions for deposit and withdrawal of
-                    funds</span
-                  >
-            </div>
-          </div>
+</section>
+<section class="our-partners">
+    <div class="container">
+        <div class="our-partners__container"><h2 class="our-partners__heading heading heading--size-m">Our
+            partners</h2>
+            <ul class="our-partners__list">
+                <li class="our-partners__item"><img src="{% static 'site/assets/img/logo-partner-1.svg' %}" alt="Logo" width="129"
+                                                    height="32"></li>
+                <li class="our-partners__item"><img src="{% static 'site/assets/img/logo-partner-2.svg' %}" alt="Logo" width="129"
+                                                    height="32"></li>
+                <li class="our-partners__item"><img src="{% static 'site/assets/img/logo-partner-3.svg' %}" alt="Logo" width="129"
+                                                    height="32"></li>
+                <li class="our-partners__item"><img src="{% static 'site/assets/img/logo-partner-4.svg' %}" alt="Logo" width="129"
+                                                    height="32"></li>
+                <li class="our-partners__item"><img src="{% static 'site/assets/img/logo-partner-5.svg' %}" alt="Logo" width="129"
+                                                    height="32"></li>
+            </ul>
         </div>
-        <div class="frame-17"><div class="img-18"></div></div>
-      </div>
-      <div class="wrapper-5">
-        <div class="ellipse-19"></div>
-        <div class="ellipse-1a"></div>
-        <div class="cap-main-1b">
-          <div class="frame-1c">
-                <span class="high-risk-acquiring-1d">High risk acquiring</span
-                ><span class="multicurrency-acquiring-supports"
-          >Multicurrency acquiring supports all types of payment cards
-                  and the most popular cryptocurrencies (Bitcoin, Ethereum,
-                  etc.)</span
-          >
-          </div>
-        </div>
-        <div class="ccards">
-          <div class="row-1e">
-            <div class="card-1f">
-              <div class="icons-20"></div>
-              <div class="content-21">
-                    <span class="multicurrency-payments"
-                    >Multicurrency payments</span
-                    ><span class="accept-any-payments"
-              >Accept any payments on your website. There are no
-                      restrictions on region, currency and amount.</span
-              >
-              </div>
-            </div>
-            <div class="card-22">
-              <div class="icons-23"></div>
-              <div class="content-24">
-                    <span class="multicurrency-payments-25"
-                    >Accompanying accounting</span
-                    ><span class="get-legal-closing"
-              >Get legal closing documents in compliance with all
-                      acquirer requirements</span
-              >
-              </div>
-            </div>
-            <div class="card-26">
-              <div class="icons-27"></div>
-              <div class="content-28">
-                    <span class="multicurrency-payments-29"
-                    >Complete security</span
-                    ><span class="complete-security"
-              >All data is protected with two factor authentication, 3-D
-                      Secure and PCI DSS</span
-              >
-              </div>
-            </div>
-          </div>
-          <div class="row-2a">
-            <div class="card-2b">
-              <div class="icons-2c">
-                <div class="group">
-                  <div class="rectangle"></div>
-                  <span class="text-17">24/7</span>
-                </div>
-              </div>
-              <div class="content-2d">
-                    <span class="multicurrency-payments-2e">24/7 support</span
-                    ><span class="our-technical-support"
-              >Our technical support are available 24/7 and are always
-                      ready to help you</span
-              >
-              </div>
-            </div>
-            <div class="card-2f">
-              <div class="icons-30"></div>
-              <div class="content-31">
-                    <span class="multicurrency-payments-32">Personal Area</span
-                    ><span class="get-access-to"
-              >Get access to 24/7 transactions, reporting and
-                      statistics</span
-              >
-              </div>
-            </div>
-            <div class="card-33">
-              <div class="icons-34"></div>
-              <div class="content-35">
-                    <span class="multicurrency-payments-36"
-                    >Flexible pricing policy</span
-                    ><span class="floating-commissions"
-              >Floating commissions and special conditions for
-                      international business</span
-              >
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="wrapper-9">
-        <div class="wrapper-a">
-          <div class="frame-37">
-            <div class="img-38"></div>
-            <div class="text">
-              <div class="cap">
-                    <span class="who-is-our"
-                    >Who is our High Risk acquiring suitable for?</span
-                    ><span class="high-risk-acquiring-39"
-              >High Risk acquiring from Qoin+ has no geographic and
-                      monetary restrictions, supports cryptocurrencies, works
-                      with any payment cards. Our clients are:</span
-              >
-              </div>
-              <div class="txt">
-                <div class="div">
-                  <div class="div-3a"></div>
-                  <div class="content-3b">
-                        <span class="bookmaker-companies"
-                        >Bookmaker Companies</span
-                        ><span class="use-acquiring-worldwide"
-                  >Use our acquiring to receive payments from clients
-                          all over the world. The residence of your company does
-                          not matter.</span
-                  >
-                  </div>
-                </div>
-                <div class="div-3c">
-                  <div class="div-3d"></div>
-                  <div class="content-3e">
-                        <span class="gambling-platforms"
-                        >Gambling Platforms</span
-                        ><span class="accept-payments-worldwide"
-                  >Your players will no longer have regional and legal
-                          restrictions. Accept payments from cards and
-                          cryptocurrency wallets.</span
-                  >
-                  </div>
-                </div>
-                <div class="div-3f">
-                  <div class="div-40"></div>
-                  <div class="content-41">
-                        <span class="crypto-currency-exchanges"
-                        >Crypto currency exchanges</span
-                        ><span class="unlimited-transactions"
-                  >Use unlimited transactions without violating
-                          regulatory requirements. Our tokenization will allow
-                          you to conveniently carry out settlements with your
-                          clients.</span
-                  >
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="div-42">
-          <div class="cap-main-43">
-            <div class="txt-44">
-                  <span class="leave-request"
-                  >Leave a request for connection to High Risk acquiring</span
-                  ><span class="contact-experts"
-            >Our experts will contact you as soon as possible and advise
-                    on the terms of connection</span
-            >
-            </div>
-            <div class="form">
-              <div class="input-field">
-                <div class="input-left">
-                  <div class="text-wrapper">
-                    <span class="left-text">Your name</span>
-                  </div>
-                </div>
-              </div>
-              <div class="input-field-45">
-                <div class="input-left-46">
-                  <div class="text-wrapper-47">
-                    <span class="left-text-48">Your contact</span>
-                  </div>
-                </div>
-              </div>
-              <div class="button-49">
-                <span class="send">Send</span>
-                <div class="right-arrow-4a"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="div-4b">
-        <div class="ellipse-4c"></div>
-        <div class="ellipse-4d"></div>
-        <div class="cap-main-4e">
-          <div class="frame-4f">
-                <span class="cryptocurrency-acquiring"
-                >Cryptocurrency acquiring</span
-                ><span class="benefits-tokenization"
-          >HighRisk acquiring provides for the possibility of
-                  settlements in cryptocurrency, without chargeback and with
-                  complete transparency of transactions. Benefits of
-                  tokenization for clients:</span
-          >
-          </div>
-        </div>
-        <div class="credit-cards">
-          <div class="row-50">
-            <div class="card-51">
-              <div class="content-52">
-                    <span class="cryptocurrency-payment"
-                    >Cryptocurrency payment</span
-                    ><span class="accept-crypto-payments"
-              >Accept crypto payments on your website instantly and
-                      without intermediaries</span
-              >
-              </div>
-              <div class="icons-53"><div class="div-54"></div></div>
-            </div>
-            <div class="frame-55">
-              <div class="card-56">
-                <div class="content-57">
-                      <span class="new-clients">New clients</span
-                      ><span class="accessible-payment"
-                >The availability of payment in tokens and coins makes
-                        your goods and services more accessible to crypto
-                        holders</span
-                >
-                </div>
-                <div class="icons-58"><div class="div-59"></div></div>
-              </div>
-              <div class="card-5a">
-                <div class="content-5b">
-                      <span class="financial-transparency"
-                      >Financial transparency</span
-                      ><span class="two-way-verification"
-                >Two-way verification of the legitimacy of accounts and
-                        transactions for the needs of risk management and for
-                        your clients</span
-                >
-                </div>
-                <div class="icons-5c"><div class="div-5d"></div></div>
-              </div>
-            </div>
-          </div>
-          <div class="bg">
-            <div class="ellipse-5e"></div>
-            <div class="ellipse-5f"></div>
-            <div class="ellipse-60"></div>
-            <div class="frame-61">
-              <div class="frame-62">
-                <div class="b">
-                  <div class="plus"><div class="right-arrow-63"></div></div>
-                  <div class="frame-64">
-                    <div class="frame-65">
-                      <span class="bitcoin">Bitcoin</span>
-                      <div class="frame-66">
-                            <span class="btc">BTC</span
-                            ><span class="usd">USD</span>
-                      </div>
-                    </div>
-                    <div class="frame-67">
-                      <span class="hidden">******</span>
-                    </div>
-                  </div>
-                  <div class="frame-68"><div class="bitcoin-69"></div></div>
-                </div>
-              </div>
-              <div class="e">
-                <div class="frame-6a"><div class="all-6b"></div></div>
-                <div class="frame-6c">
-                  <div class="frame-6d">
-                    <span class="ethereum">Ethereum</span>
-                    <div class="frame-6e">
-                          <span class="eth">ETH</span
-                          ><span class="usd-6f">USD</span>
-                    </div>
-                  </div>
-                  <div class="frame-70">
-                    <span class="hidden-71">******</span>
-                  </div>
-                </div>
-                <div class="plus-72">
-                  <div class="right-arrow-73"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row-74">
-            <div class="card-75">
-              <div class="icons-76"><div class="div-77"></div></div>
-              <div class="content-78">
-                    <span class="high-processing-speed"
-                    >High processing speed</span
-                    ><span class="own-servers"
-              >In the process of processing transactions, only our own
-                      servers are used</span
-              >
-              </div>
-            </div>
-            <div class="card-79">
-              <div class="icons-7a"><div class="div-7b"></div></div>
-              <div class="content-7c">
-                    <span class="low-cost">Low cost</span
-                    ><span class="flexible-tariff-plans"
-              >Flexible tariff plans and a universal approach to
-                      acquiring commissions without monthly fees</span
-              >
-              </div>
-            </div>
-            <div class="card-7d">
-              <div class="icons-7e"><div class="div-7f"></div></div>
-              <div class="content-80">
-                    <span class="no-chargeback">No chargeback</span
-                    ><span class="opposition-impossibility"
-              >The impossibility of direct opposition of the completed
-                      transaction by the user</span
-              >
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="div-81">
-        <div class="frame-82">
-          <div class="frame-83">
-            <div class="frame-84">
-              <div class="still-have-questions">
-                    <span class="still-have-questions-85"
-                    >Still have questions?<br /></span
-                    ><span class="write-to-us">Write to us!</span>
-              </div>
-              <span class="fill-out-form"
-              >Fill out the form and our specialists will contact you as
-                    soon as possible</span
-              >
-            </div>
-            <div class="frame-86">
-              <div class="mastercard"></div>
-              <div class="visa"></div>
-            </div>
-          </div>
-          <form class="cap-main-87">
-            <div class="frame-88">
-              <div class="input-field-89">
-                <div class="input-left-8a">
-                  <div class="text-wrapper-8b">
-                    <input class="left-text-8c" placeholder="Your website">
-                  </div>
-                </div>
-              </div>
-              <div class="input-field-8d">
-                <div class="input-left-8e">
-                  <div class="text-wrapper-8f">
-                    <input class="left-text-90" placeholder="Your name">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="frame-91">
-              <div class="input-field-92">
-                <div class="input-left-93">
-                  <div class="text-wrapper-94">
-                    <input class="left-text-95" placeholder="Your phone">
-                  </div>
-                </div>
-              </div>
-              <div class="input-field-96">
-                <div class="input-left-97">
-                  <div class="text-wrapper-98">
-                    <input class="left-text-99" placeholder="Your e-mail">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="input-field-9a">
-              <div class="input-left-9b">
-                <div class="text-wrapper-9c">
-                  <textarea class="left-text-9d" placeholder="Your message"></textarea>
-
-                </div>
-              </div>
-            </div>
-            <div class="button-9e">
-              <button class="send-9f">Send</button>
-              <div class="right-arrow-a0"></div>
-            </div>
-          </form>
-        </div>
-      </div>
-      <div class="footer">
-        <div class="frame-a1">
-          <div class="logo"></div>
-          <div class="menu-a2">
-            <div class="frame-a3">
-                  <span class="home-a4">Home</span
-                  ><span class="about-us-a5">About us</span
-            ><span class="protection">Protection</span
-            ><span class="fintech">Fintech</span
-            ><span class="business-and-commerce"
-            >Business and commerce</span
-            ><span class="contacts-a6">Contacts</span>
-            </div>
-          </div>
-          <div class="line-a7"></div>
-          <div class="frame-a8">
-            {% get_all_pages as pages %}
-            {% for page in pages %}
-            <a href="{% url 'webmain:page' page.slug %}" class="{{ page.slug }}"> {{ page.name }}</a>
-            {% endfor %}
-          </div>
-          <span class="all-rights-reserved"
-          >2025 © Qoin+ All rights reserved<br />ILYA BIG STAR LIMITED
-                LIABILITY COMPANY<br />Michała Kleofasa Ogińskiego 11/9
-                <br />03-318 Warsaw, Poland</span
-          >
-        </div>
-      </div>
     </div>
-  </div>
+</section>
+<section class="advantages">
+    <div class="advantages__container container"><h2 class="visually-hidden">Advantages</h2>
+        <ul class="advantages__list">
+            <li class="advantages__item"><img class="advantages__item-icon" src="{% static 'site/assets/img/icons/cards.svg' %}"
+                                              alt="" width="48" height="48">
+                <p class="advantages__item-text">Fast and legal transactions in any payment systems (Visa,
+                    Master Card, etc.) Fast and legal transactions in any payment systems (Visa, Master Card,
+                    etc.)</p></li>
+            <li class="advantages__item"><img class="advantages__item-icon" src="{% static 'site/assets/img/icons/scales.svg' %}"
+                                              alt="" width="48" height="48">
+                <p class="advantages__item-text">The terms of cooperation are determined based on your turnover
+                    and are most beneficial for you</p></li>
+            <li class="advantages__item"><img class="advantages__item-icon"
+                                              src="{% static 'site/assets/img/icons/transparency.svg' %}" alt="" width="48"
+                                              height="48">
+                <p class="advantages__item-text">Transparent commissions for deposit and withdrawal of funds</p>
+            </li>
+        </ul>
+        <div class="advantages__decoration">
+            <div class="advantages__decoration-card advantages__decoration-card--white card-decor card-decor--white"></div>
+            <div class="advantages__decoration-card advantages__decoration-card--orange card-decor card-decor--orange"></div>
+        </div>
+    </div>
+</section>
+<section class="risk">
+    <div class="risk__container container"><h2 class="risk__heading heading heading--size-m">High risk
+        acquiring</h2>
+        <p class="risk__description">Multicurrency acquiring supports all types of payment cards and the most
+            popular cryptocurrencies (Bitcoin, Ethereum, etc.)</p>
+        <ul class="risk__list">
+            <li class="risk__item"><img class="risk__item-icon" src="{% static 'site/assets/img/icons/payments.svg' %}" alt=""
+                                        width="48" height="48">
+                <h3 class="risk__item-name heading heading--size-s">Multicurrency payments</h3>
+                <p class="risk__item-text">Accept any payments on your website. There are no restrictions on
+                    region, currency and amount</p></li>
+            <li class="risk__item"><img class="risk__item-icon" src="{% static 'site/assets/img/icons/legal.svg' %}" alt=""
+                                        width="48" height="48">
+                <h3 class="risk__item-name heading heading--size-s">Accompanying accounting</h3>
+                <p class="risk__item-text">Get legal closing documents in compliance with all acquirer
+                    requirements</p></li>
+            <li class="risk__item"><img class="risk__item-icon" src="{% static 'site/assets/img/icons/security.svg' %}" alt=""
+                                        width="48" height="48">
+                <h3 class="risk__item-name">Complete security</h3>
+                <p class="risk__item-text">All data is protected with two factor authentication, 3-D Secure
+                    and PCI DSS</p></li>
+            <li class="risk__item"><img class="risk__item-icon" src="{% static 'site/assets/img/icons/247.svg' %}" alt="" width="48"
+                                        height="48">
+                <h3 class="risk__item-name heading heading--size-s">24/7 support</h3>
+                <p class="risk__item-text">Our technical support are available 24/7 and are always ready to help
+                    you</p></li>
+            <li class="risk__item"><img class="risk__item-icon" src="{% static 'site/assets/img/icons/personal.svg' %}" alt=""
+                                        width="48" height="48">
+                <h3 class="risk__item-name heading heading--size-s">Personal Area</h3>
+                <p class="risk__item-text">Get access to 24/7 transactions, reporting and statistics</p></li>
+            <li class="risk__item"><img class="risk__item-icon" src="{% static 'site/assets/img/icons/flexible.svg' %}" alt=""
+                                        width="48" height="48">
+                <h3 class="risk__item-name heading heading--size-s">Flexible pricing policy</h3>
+                <p class="risk__item-text">Floating commissions and special conditions for international
+                    business</p></li>
+        </ul>
+    </div>
+</section>
+<section class="who-is">
+    <div class="who-is__container container"><h2 class="who-is__heading heading heading--size-m">Who is our High
+        Risk acquiring suitable for?</h2>
+        <p class="who-is__description">High Risk acquiring from Qoin+ has no geographic and monetary
+            restrictions, supports cryptocurrencies, works with any payment cards. Our clients are:</p>
+        <ul class="who-is__list">
+            <li class="who-is__item"><img class="who-is__item-icon" src="{% static 'site/assets/img/icons/bookmaker.svg' %}" alt=""
+                                          width="30" height="30">
+                <h3 class="who-is__item-name heading heading--size-s">Bookmaker Companies</h3>
+                <p class="who-is__item-text">Use our acquiring to receive payments from clients all over the
+                    world. The residence of your company does not matter.</p></li>
+            <li class="who-is__item"><img class="who-is__item-icon" src="{% static 'site/assets/img/icons/gambling.svg' %}" alt=""
+                                          width="30" height="30">
+                <h3 class="who-is__item-name heading heading--size-s">Gambling Platforms</h3>
+                <p class="who-is__item-text">Your players will no longer have regional and legal restrictions.
+                    Accept payments from cards and cryptocurrency wallets.</p></li>
+            <li class="who-is__item"><img class="who-is__item-icon" src="{% static 'site/assets/img/icons/crypto.svg' %}" alt=""
+                                          width="30" height="30">
+                <h3 class="who-is__item-name heading heading--size-s">Crypto currency exchanges</h3>
+                <p class="who-is__item-text">Use unlimited transactions without violating regulatory
+                    requirements. Our tokenization will allow you to conveniently carry out settlements with
+                    your clients.</p></li>
+        </ul>
+        <div class="who-is__decoration">
+            <div class="who-is__decoration-card who-is__decoration-card--white card-decor card-decor--white"></div>
+            <div class="who-is__decoration-card who-is__decoration-card--orange card-decor card-decor--orange"></div>
+        </div>
+    </div>
+</section>
+<div class="risk-form">
+    <form class="container">
+        <div class="risk-form__container"><h2 class="risk-form__heading heading heading--size-m">Leave a request
+            for connection to High Risk acquiring</h2>
+            <p class="risk-form__description">Our experts will contact you as soon as possible and advise on the
+                terms of connection</p>
+            <div class="risk-form__wrapper">
+                <div class="risk-form__input input"><input type="text" name="name" placeholder="Your name">
+                </div>
+                <div class="risk-form__input input"><input type="text" name="contact"
+                                                           placeholder="Your contact"></div>
+                <button class="risk-form__button btn-submit" type="submit"><span>Send</span></button>
+            </div>
+        </div>
+    </form>
 </div>
-<!-- Generated by Codia AI - https://codia.ai/ -->
-</body>
-</html>
+<section class="acquiring">
+    <div class="acquiring__container container"><h2 class="acquiring__heading heading heading--size-m">
+        Cryptocurrency acquiring</h2>
+        <p class="acquiring__description">HighRisk acquiring provides for the possibility of settlements in
+            cryptocurrency, without chargeback and with complete transparency of transactions. Benefits of
+            tokenization for clients:</p>
+        <div class="acquiring__wrapper">
+            <div class="acquiring__decoration"></div>
+            <ul class="acquiring__list">
+                <li class="acquiring__item">
+                    <div class="acquiring__item-icon"><img src="{% static 'site/assets/img/icons/crypto.svg' %}" alt="" width="12"
+                                                           height="12"></div>
+                    <h3 class="acquiring__item-name heading heading--size-s">Cryptocurrency payment</h3>
+                    <p class="acquiring__item-text">Accept crypto payments on your website<br>instantly and
+                        without intermediaries</p></li>
+                <li class="acquiring__item">
+                    <div class="acquiring__item-icon"><img src="{% static 'site/assets/img/icons/clients.svg' %}" alt="" width="12"
+                                                           height="12"></div>
+                    <h3 class="acquiring__item-name heading heading--size-s">New clients</h3>
+                    <p class="acquiring__item-text">The availability of payment in tokens and coins makes your
+                        goods and services more accessible to crypto holders</p></li>
+                <li class="acquiring__item">
+                    <div class="acquiring__item-icon"><img src="{% static 'site/assets/img/icons/transparency.svg' %}" alt=""
+                                                           width="12" height="12"></div>
+                    <h3 class="acquiring__item-name heading heading--size-s">Financial transparency</h3>
+                    <p class="acquiring__item-text">Two-way verification of the legitimacy of accounts and
+                        transactions for the needs of risk management and for your clients</p></li>
+                <li class="acquiring__item">
+                    <div class="acquiring__item-icon"><img src="{% static 'site/assets/img/icons/processing.svg' %}" alt=""
+                                                           width="12" height="12"></div>
+                    <h3 class="acquiring__item-name heading heading--size-s">High processing speed</h3>
+                    <p class="acquiring__item-text">In the process of processing transactions, br only our own
+                        servers are used</p></li>
+                <li class="acquiring__item">
+                    <div class="acquiring__item-icon"><img src="{% static 'site/assets/img/icons/cost.svg' %}" alt="" width="12"
+                                                           height="12"></div>
+                    <h3 class="acquiring__item-name heading heading--size-s">Low cost</h3>
+                    <p class="acquiring__item-text">Flexible tariff plans and a universal approach to acquiring
+                        commissions without monthly fees</p></li>
+                <li class="acquiring__item">
+                    <div class="acquiring__item-icon"><img src="{% static 'site/assets/img/icons/chargeback.svg' %}" alt=""
+                                                           width="12" height="12"></div>
+                    <h3 class="acquiring__item-name heading heading--size-s">No chargeback</h3>
+                    <p class="acquiring__item-text">The impossibility of direct opposition<br>of the completed
+                        transaction by the user</p></li>
+            </ul>
+        </div>
+    </div>
+</section>
+<section class="feedback-section">
+    <div class="feedback-section__container container"><h2
+            class="feedback-section__heading heading heading--size-l">Still have questions?<br><span>Write to us!</span>
+    </h2>
+        <p class="feedback-section__text">Fill out the form and our specialists will contact you as soon as
+            possible</p>
+        <form action="#" method="post" class="feedback-section__wrapper">
+            <div class="feedback-section__input input"><input type="text" name="website"
+                                                              placeholder="Your website"></div>
+            <div class="feedback-section__input input"><input type="text" name="name" placeholder="Your name*"
+                                                              required></div>
+            <div class="feedback-section__input input"><input type="tel" name="phone" placeholder="Your phone*"
+                                                              required></div>
+            <div class="feedback-section__input input"><input type="email" placeholder="Your e-mail"></div>
+            <div class="feedback-section__input input"><textarea placeholder="Your message"
+                                                                 name="message"></textarea></div>
+            <button class="feedback-section__button btn-submit" type="submit"><span>Send</span></button>
+        </form>
+    </div>
+</section>
+<div class="payment-systems">
+    <div class="container">
+        <div class="payment-systems__container"><img class="payment-systems__img"
+                                                     src="{% static 'site/assets/img/mastercard.svg' %}" alt="mastercard logo"
+                                                     width="106" height="37"> <img class="payment-systems__img"
+                                                                                   src="{% static 'site/assets/img/visa.svg' %}"
+                                                                                   alt="visa logo" width="87"
+                                                                                   height="37"></div>
+    </div>
+</div>
+</main>
+
+{% endblock content %}

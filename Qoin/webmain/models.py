@@ -21,7 +21,7 @@ class SettingsGlobale(models.Model):
 
 class HomePage(models.Model):
     """Главная страница"""
-    previev = models.FileField(upload_to='settings/%Y/%m/%d/', blank=True, null=True, verbose_name="Превью", default='default/imagegallery/imagegellery_images.png', validators=[FileExtensionValidator(allowed_extensions=['png', 'webp', 'jpeg', 'jpg', 'svg'])],)
+    preview = models.FileField(upload_to='settings/%Y/%m/%d/', blank=True, null=True, verbose_name="Превью", default='default/imagegallery/imagegellery_images.png', validators=[FileExtensionValidator(allowed_extensions=['png', 'webp', 'jpeg', 'jpg', 'svg'])],)
     title = models.CharField(verbose_name="Мета-заголовок", max_length=150, blank=True, null=True,)
     description = models.CharField(verbose_name="Мета-описание", max_length=255, blank=True, null=True,)
     propertytitle = models.CharField(verbose_name="Мета-заголовок ссылки", max_length=150, blank=True, null=True,)
