@@ -66,7 +66,7 @@
                            hx-get="{% url 'webmain:page' page.slug %}"
                            hx-target="#content-body"
                            hx-push-url="true"
-                           class="footer__docs-link">{{ page.name }}</a>
+                           class="footer__nav-link">{{ page.name }}</a>
                     </li>
                     {% endfor %}
                     {% get_pages_by_type 2 as privacy_pages %}
@@ -76,7 +76,7 @@
                            hx-get="{% url 'webmain:page' page.slug %}"
                            hx-target="#content-body"
                            hx-push-url="true"
-                           class="footer__docs-link">{{ page.name }}</a>
+                           class="footer__nav-link">{{ page.name }}</a>
                     </li>
                     {% endfor %}
                     {% get_pages_by_type 3 as privacy_pages %}
@@ -86,7 +86,7 @@
                            hx-get="{% url 'webmain:page' page.slug %}"
                            hx-target="#content-body"
                            hx-push-url="true"
-                           class="footer__docs-link">{{ page.name }}</a>
+                           class="footer__nav-link">{{ page.name }}</a>
                     </li>
                     {% endfor %}
                     <li class="footer__nav-item">
