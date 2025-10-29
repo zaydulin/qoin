@@ -79,8 +79,8 @@
                     {% get_pages_by_type 4 as privacy_pages %}
                     {% for page in privacy_pages %}
                     <li class="footer__docs-item">
-                        <a href="{% url 'page' page.slug %}"
-                           hx-get="{% url 'page' page.slug %}"
+                        <a href="{% url 'webmain:page' page.slug %}"
+                           hx-get="{% url 'webmain:page' page.slug %}"
                            hx-target="#content-body"
                            hx-push-url="true"
                            class="footer__docs-link">{{ page.name }}</a>
@@ -91,8 +91,8 @@
                     {% get_pages_by_type 5 as terms_pages %}
                     {% for page in terms_pages %}
                     <li class="footer__docs-item">
-                        <a href="{% url 'page' page.slug %}"
-                           hx-get="{% url 'page' page.slug %}"
+                        <a href="{% url 'webmain:page' page.slug %}"
+                           hx-get="{% url 'webmain:page' page.slug %}"
                            hx-target="#content-body"
                            hx-push-url="true"
                            class="footer__docs-link">{{ page.name }}</a>
@@ -103,8 +103,8 @@
                     {% get_pages_by_type 6 as partners_pages %}
                     {% for page in partners_pages %}
                     <li class="footer__docs-item">
-                        <a href="{% url 'page' page.slug %}"
-                           hx-get="{% url 'page' page.slug %}"
+                        <a href="{% url 'webmain:page' page.slug %}"
+                           hx-get="{% url 'webmain:page' page.slug %}"
                            hx-target="#content-body"
                            hx-push-url="true"
                            class="footer__docs-link">{{ page.name }}</a>
@@ -115,8 +115,8 @@
                     {% get_pages_by_type 7 as help_pages %}
                     {% for page in help_pages %}
                     <li class="footer__docs-item">
-                        <a href="{% url 'page' page.slug %}"
-                           hx-get="{% url 'page' page.slug %}"
+                        <a href="{% url 'webmain:page' page.slug %}"
+                           hx-get="{% url 'webmain:page' page.slug %}"
                            hx-target="#content-body"
                            hx-push-url="true"
                            class="footer__docs-link">{{ page.name }}</a>
@@ -127,8 +127,8 @@
                     {% get_pages_by_type 8 as cookies_pages %}
                     {% for page in cookies_pages %}
                     <li class="footer__docs-item">
-                        <a href="{% url 'page' page.slug %}"
-                           hx-get="{% url 'page' page.slug %}"
+                        <a href="{% url 'webmain:page' page.slug %}"
+                           hx-get="{% url 'webmain:page' page.slug %}"
                            hx-target="#content-body"
                            hx-push-url="true"
                            class="footer__docs-link">{{ page.name }}</a>
@@ -139,8 +139,8 @@
                     {% get_pages_by_type 9 as user_agreement_pages %}
                     {% for page in user_agreement_pages %}
                     <li class="footer__docs-item">
-                        <a href="{% url 'page' page.slug %}"
-                           hx-get="{% url 'page' page.slug %}"
+                        <a href="{% url 'webmain:page' page.slug %}"
+                           hx-get="{% url 'webmain:page' page.slug %}"
                            hx-target="#content-body"
                            hx-push-url="true"
                            class="footer__docs-link">{{ page.name }}</a>
