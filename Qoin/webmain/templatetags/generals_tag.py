@@ -64,6 +64,5 @@ def get_current_telegram():
     return ContactPage.objects.first().telegram
 
 @register.simple_tag
-def get_all_pages():
-    return Pages.objects.filter(publishet=True)
-
+def get_pages_by_type(page_type):
+    return Pages.objects.filter(pagetype=page_type, publishet=True)

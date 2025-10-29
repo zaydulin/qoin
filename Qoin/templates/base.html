@@ -44,14 +44,14 @@
     </header>
     <main class="main" id="content-body">
 
-    {% block content %}{% endblock content %}
+        {% block content %}{% endblock content %}
     </main>
     <footer class="footer">
         <div class="container">
             <div class="footer__container"><a class="footer__logo">
                 <img src="{% static 'site/assets/img/logo-footer.png' %}"
-                                                                        srcset="{% static 'site/assets/img/logo-footer@2x.png 2x"
-                                                                        alt="logo" width="178" height="52"></a>
+                     srcset="{% static 'site/assets/img/logo-footer@2x.png 2x"
+                     alt="logo" width="178" height="52"></a>
                 <ul class="footer__nav">
                     <li class="footer__nav-item">
                         <a href="{% url 'webmain:home' %}" hx-get="{% url 'webmain:home' %}" hx-target="#content-body" hx-push-url="true" class="footer__nav-link">Home</a>
@@ -72,13 +72,80 @@
                         <a href="{% url 'webmain:contact' %}" hx-get="{% url 'webmain:contact' %}" hx-target="#content-body" hx-push-url="true"  class="footer__nav-link">Contacts</a>
                     </li>
                 </ul>
+                {% load static generals_tag i18n %}
+
                 <ul class="footer__docs">
-                    <li class="footer__docs-item"><a href="#" class="footer__docs-link">Privacy policy</a></li>
-                    <li class="footer__docs-item"><a href="#" class="footer__docs-link">Terms of use</a></li>
-                    <li class="footer__docs-item"><a href="#" class="footer__docs-link">Partners</a></li>
-                    <li class="footer__docs-item"><a href="#" class="footer__docs-link">Help</a></li>
-                    <li class="footer__docs-item"><a href="#" class="footer__docs-link">Сookies</a></li>
-                    <li class="footer__docs-item"><a href="#" class="footer__docs-link">User agreement</a></li>
+                    {# Privacy policy #}
+                    {% get_pages_by_type 4 as privacy_pages %}
+                    {% for page in privacy_pages %}
+                    <li class="footer__docs-item">
+                        <a href="{% url 'page' page.slug %}"
+                           hx-get="{% url 'page' page.slug %}"
+                           hx-target="#content-body"
+                           hx-push-url="true"
+                           class="footer__docs-link">{{ page.name }}</a>
+                    </li>
+                    {% endfor %}
+
+                    {# Terms of use #}
+                    {% get_pages_by_type 5 as terms_pages %}
+                    {% for page in terms_pages %}
+                    <li class="footer__docs-item">
+                        <a href="{% url 'page' page.slug %}"
+                           hx-get="{% url 'page' page.slug %}"
+                           hx-target="#content-body"
+                           hx-push-url="true"
+                           class="footer__docs-link">{{ page.name }}</a>
+                    </li>
+                    {% endfor %}
+
+                    {# Partners #}
+                    {% get_pages_by_type 6 as partners_pages %}
+                    {% for page in partners_pages %}
+                    <li class="footer__docs-item">
+                        <a href="{% url 'page' page.slug %}"
+                           hx-get="{% url 'page' page.slug %}"
+                           hx-target="#content-body"
+                           hx-push-url="true"
+                           class="footer__docs-link">{{ page.name }}</a>
+                    </li>
+                    {% endfor %}
+
+                    {# Help #}
+                    {% get_pages_by_type 7 as help_pages %}
+                    {% for page in help_pages %}
+                    <li class="footer__docs-item">
+                        <a href="{% url 'page' page.slug %}"
+                           hx-get="{% url 'page' page.slug %}"
+                           hx-target="#content-body"
+                           hx-push-url="true"
+                           class="footer__docs-link">{{ page.name }}</a>
+                    </li>
+                    {% endfor %}
+
+                    {# Cookies #}
+                    {% get_pages_by_type 8 as cookies_pages %}
+                    {% for page in cookies_pages %}
+                    <li class="footer__docs-item">
+                        <a href="{% url 'page' page.slug %}"
+                           hx-get="{% url 'page' page.slug %}"
+                           hx-target="#content-body"
+                           hx-push-url="true"
+                           class="footer__docs-link">{{ page.name }}</a>
+                    </li>
+                    {% endfor %}
+
+                    {# User agreement #}
+                    {% get_pages_by_type 9 as user_agreement_pages %}
+                    {% for page in user_agreement_pages %}
+                    <li class="footer__docs-item">
+                        <a href="{% url 'page' page.slug %}"
+                           hx-get="{% url 'page' page.slug %}"
+                           hx-target="#content-body"
+                           hx-push-url="true"
+                           class="footer__docs-link">{{ page.name }}</a>
+                    </li>
+                    {% endfor %}
                 </ul>
                 <p class="footer__copyright"><a href="#">Privacy Policy</a> 2025 © Qoin+ All rights reserved<br>ILYA BIG
                     STAR LIMITED LIABILITY COMPANY<br>Michała Kleofasa Ogińskiego 11/9<br>03-318 Warsaw, Poland</p>
