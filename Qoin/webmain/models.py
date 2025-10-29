@@ -205,11 +205,15 @@ class Appeal(models.Model):
 class Pages(models.Model):
     """Страницы"""
     PAGETYPE = [
-        (1, 'Стандартная'),
-        (2, 'Пользовательское соглашение'),
-        (3, 'Политика конфедециальности'),
-        (4, 'Политика Cookie - Файлов'),
-        (5, 'Согласия на обработку персональных данных'),
+        (1, 'Protection'),
+        (2, 'Fintech'),
+        (3, 'Business and commerce'),
+        (4, 'Privacy policy'),
+        (5, 'Terms of use'),
+        (6, 'Partners'),
+        (7, 'Help'),
+        (8, 'Cookies'),
+        (9, 'User agreement'),
     ]
     pagetype = models.PositiveSmallIntegerField('Тип', choices=PAGETYPE, blank=False, default=1)
     name = models.CharField("Название", max_length=250)
