@@ -59,15 +59,36 @@
                     <li class="footer__nav-item">
                         <a href="{% url 'webmain:about' %}" hx-get="{% url 'webmain:about' %}" hx-target="#content-body" hx-push-url="true"  class="footer__nav-link">About us</a>
                     </li>
+                    {% get_pages_by_type 1 as privacy_pages %}
+                    {% for page in privacy_pages %}
                     <li class="footer__nav-item">
-                        <a href="#" class="footer__nav-link">Protection</a>
+                        <a href="{% url 'webmain:page' page.slug %}"
+                           hx-get="{% url 'webmain:page' page.slug %}"
+                           hx-target="#content-body"
+                           hx-push-url="true"
+                           class="footer__docs-link">{{ page.name }}</a>
                     </li>
+                    {% endfor %}
+                    {% get_pages_by_type 2 as privacy_pages %}
+                    {% for page in privacy_pages %}
                     <li class="footer__nav-item">
-                        <a href="#" class="footer__nav-link">Fintech</a>
+                        <a href="{% url 'webmain:page' page.slug %}"
+                           hx-get="{% url 'webmain:page' page.slug %}"
+                           hx-target="#content-body"
+                           hx-push-url="true"
+                           class="footer__docs-link">{{ page.name }}</a>
                     </li>
+                    {% endfor %}
+                    {% get_pages_by_type 3 as privacy_pages %}
+                    {% for page in privacy_pages %}
                     <li class="footer__nav-item">
-                        <a href="#" class="footer__nav-link">Business and commerce</a>
+                        <a href="{% url 'webmain:page' page.slug %}"
+                           hx-get="{% url 'webmain:page' page.slug %}"
+                           hx-target="#content-body"
+                           hx-push-url="true"
+                           class="footer__docs-link">{{ page.name }}</a>
                     </li>
+                    {% endfor %}
                     <li class="footer__nav-item">
                         <a href="{% url 'webmain:contact' %}" hx-get="{% url 'webmain:contact' %}" hx-target="#content-body" hx-push-url="true"  class="footer__nav-link">Contacts</a>
                     </li>
