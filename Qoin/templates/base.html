@@ -22,8 +22,8 @@
             <div class="header__container"><a class="header__logo">
                 <picture>
                     <source media="(min-width: 743px)"
-                            srcset="assets/img/logo-table.png, assets/img/logo-table@2x.png 2x">
-                    <img src="assets/img/logo.png" srcset="assets/img/logo@2x.png 2x" alt="Logo" width="120"
+                            srcset="{% static 'site/assets/img/logo-table.png' %}, {% static 'site/assets/img/logo-table@2x.png 2x' %}">
+                    <img src="{% static 'site/assets/img/logo.png' %}" srcset="{% static 'site/assets/img/logo@2x.png 2x' %}" alt="Logo" width="120"
                          height="30"></picture>
             </a>
                 <nav class="header__nav main-nav">
@@ -49,8 +49,8 @@
     <footer class="footer">
         <div class="container">
             <div class="footer__container"><a class="footer__logo">
-                <img src="assets/img/logo-footer.png"
-                                                                        srcset="assets/img/logo-footer@2x.png 2x"
+                <img src="{% static 'site/assets/img/logo-footer.png' %}"
+                                                                        srcset="{% static 'site/assets/img/logo-footer@2x.png 2x"
                                                                         alt="logo" width="178" height="52"></a>
                 <ul class="footer__nav">
                     <li class="footer__nav-item">
