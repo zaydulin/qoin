@@ -10,5 +10,7 @@ urlpatterns = [
     path('exchange/', views.ExchangeView.as_view(), name='exchange'),
     path('aml/', views.AMLKYCView.as_view(), name='aml'),
     path("page/<slug:slug>/", views.PageDetailView.as_view(), name="page"),
+    path('high-risk-request/', views.high_risk_request, name='high_risk_request'),
+    path('feedback-request/', views.feedback_request, name='feedback_request'),
 
 ]

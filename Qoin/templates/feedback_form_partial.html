@@ -1,0 +1,36 @@
+<!-- feedback_form.html -->
+<form action="#" method="post" class="feedback-section__wrapper"
+      hx-post="{% url 'webmain:feedback_request' %}"
+      hx-target="this"
+      hx-swap="outerHTML">
+    {% csrf_token %}
+
+    <div class="feedback-section__input input">
+        <input type="text" name="website" placeholder="Your website" value="{{ form.website.value|default:'' }}">
+        {% if form.website.errors %}<div style="color: red; font-size: 12px; margin-top: 5px;">{{ form.website.errors.0 }}</div>{% endif %}
+    </div>
+
+    <div class="feedback-section__input input">
+        <input type="text" name="name" placeholder="Your name*" required value="{{ form.name.value|default:'' }}">
+        {% if form.name.errors %}<div style="color: red; font-size: 12px; margin-top: 5px;">{{ form.name.errors.0 }}</div>{% endif %}
+    </div>
+
+    <div class="feedback-section__input input">
+        <input type="tel" name="phone" placeholder="Your phone*" required value="{{ form.phone.value|default:'' }}">
+        {% if form.phone.errors %}<div style="color: red; font-size: 12px; margin-top: 5px;">{{ form.phone.errors.0 }}</div>{% endif %}
+    </div>
+
+    <div class="feedback-section__input input">
+        <input type="email" name="email" placeholder="Your e-mail" value="{{ form.email.value|default:'' }}">
+        {% if form.email.errors %}<div style="color: red; font-size: 12px; margin-top: 5px;">{{ form.email.errors.0 }}</div>{% endif %}
+    </div>
+
+    <div class="feedback-section__input input">
+        <textarea placeholder="Your message" name="message">{{ form.message.value|default:'' }}</textarea>
+        {% if form.message.errors %}<div style="color: red; font-size: 12px; margin-top: 5px;">{{ form.message.errors.0 }}</div>{% endif %}
+    </div>
+
+    <button class="feedback-section__button btn-submit" type="submit" style="z-index: 99999999;">
+        <span>Send</span>
+    </button>
+</form>

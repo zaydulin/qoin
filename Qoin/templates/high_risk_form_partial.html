@@ -1,0 +1,73 @@
+<!-- high_risk_form.html -->
+<form class="container"
+      hx-post="{% url 'webmain:high_risk_request' %}"
+      hx-target="this"
+      hx-swap="outerHTML"
+      hx-indicator="#form-indicator">
+
+    <div class="risk-form__container">
+        <h2 class="risk-form__heading heading heading--size-m">
+            Leave a request for connection to High Risk acquiring
+        </h2>
+
+        <p class="risk-form__description">
+            Our experts will contact you as soon as possible and advise on the terms of connection
+        </p>
+
+        <div class="risk-form__wrapper">
+            {% if form %}
+                <!-- Показываем форму с ошибками -->
+                <div class="risk-form__input input">
+                    {{ form.name }}
+                    {% if form.name.errors %}
+                        <div class="error-message">{{ form.name.errors }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="risk-form__input input">
+                    {{ form.contact }}
+                    {% if form.contact.errors %}
+                        <div class="error-message">{{ form.contact.errors }}</div>
+                    {% endif %}
+                </div>
+            {% else %}
+                <!-- Изначальная форма -->
+                <div class="risk-form__input input">
+                    <input type="text" name="name" placeholder="Your name" required>
+                </div>
+
+                <div class="risk-form__input input">
+                    <input type="text" name="contact" placeholder="Your contact" required>
+                </div>
+            {% endif %}
+
+            <button class="risk-form__button btn-submit" type="submit">
+                <span>Send</span>
+                <div id="form-indicator" class="htmx-indicator">
+                    <span>Sending...</span>
+                </div>
+            </button>
+        </div>
+    </div>
+</form>
+
+<!-- Стили для индикатора загрузки и ошибок -->
+<style>
+    .htmx-indicator {
+        display: none;
+    }
+    .htmx-request .htmx-indicator {
+        display: inline;
+    }
+    .htmx-request .btn-submit span:first-child {
+        display: none;
+    }
+    .error-message {
+        color: #ff4444;
+        font-size: 12px;
+        margin-top: 5px;
+    }
+    .risk-form__input.input {
+        position: relative;
+    }
+</style>

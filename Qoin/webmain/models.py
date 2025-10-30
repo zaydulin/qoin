@@ -243,3 +243,32 @@ class Pages(models.Model):
         verbose_name = "Страница"
         verbose_name_plural = "Страницы"
 
+
+class HighRiskRequest(models.Model):
+    name = models.CharField("Имя", max_length=255)
+    contact = models.CharField("Контакт", max_length=255)
+    created_at = models.DateTimeField("Создано", auto_now_add=True)
+    is_processed = models.BooleanField("Обработано", default=False)
+
+    class Meta:
+        verbose_name = "Запрос на High Risk acquiring"
+        verbose_name_plural = "Запросы на High Risk acquiring"
+
+    def __str__(self):
+        return f"{self.name} - {self.contact}"
+
+class FeedbackRequest(models.Model):
+    website = models.URLField("Website", max_length=255, blank=True, null=True)
+    name = models.CharField("Name", max_length=255)
+    phone = models.CharField("Phone", max_length=20)
+    email = models.EmailField("Email", blank=True, null=True)
+    message = models.TextField("Message", blank=True, null=True)
+    created_at = models.DateTimeField("Created at", auto_now_add=True)
+    is_processed = models.BooleanField("Processed", default=False)
+
+    class Meta:
+        verbose_name = "Feedback Request"
+        verbose_name_plural = "Feedback Requests"
+
+    def __str__(self):
+        return f"{self.name} - {self.phone}"

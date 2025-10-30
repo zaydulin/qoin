@@ -2,6 +2,11 @@ from django.views.generic import TemplateView, DetailView
 from webmain.models import HomePage, AboutPage, ContactPage, Appeal, Pages, ExchangePage, AMLKYCPage
 from webmain.forms import AppealForm
 from django.shortcuts import redirect
+from django.http import JsonResponse, HttpResponse
+from django.views.decorators.http import require_http_methods
+from django.template.loader import render_to_string
+
+from webmain.forms import HighRiskRequestForm, FeedbackRequestForm
 
 
 class CustomHtmxMixin:
@@ -227,3 +232,54 @@ class PageDetailView(CustomHtmxMixin, DetailView):
         else:
             context['pageinformation'] = None
         return context
+
+
+@require_http_methods(["POST"])
+def high_risk_request(request):
+    form = HighRiskRequestForm(request.POST)
+
+    if form.is_valid():
+        form.save()
+
+        # Возвращаем сообщение об успехе
+        success_html = """
+        <div class="success-message">
+            <h4 style="margin: 0 0 0.5rem 0; color: #155724;">✅ Thank you!</h4>
+            <p style="margin: 0;">Our experts will contact you as soon as possible and advise on the terms of connection.</p>
+        </div>
+        """
+        return HttpResponse(success_html)
+    else:
+        # Возвращаем сообщение об ошибке
+        error_html = f"""
+        <div class="error-message" style="background: #f8d7da; color: #721c24; padding: 1rem; border-radius: 5px; margin-top: 1rem; border: 1px solid #f5c6cb;">
+            <p style="margin: 0 0 0.5rem 0;">Please correct the following errors:</p>
+            <ul style="margin: 0; padding-left: 1rem;">
+                {"".join(f'<li>{error}</li>' for field in form for error in field.errors)}
+            </ul>
+        </div>
+        """
+        return HttpResponse(error_html)
+
+
+@require_http_methods(["POST"])
+def feedback_request(request):
+    form = FeedbackRequestForm(request.POST)
+
+    if form.is_valid():
+        form.save()
+
+        # Успешный ответ
+        success_html = """
+        <div class="success-message" style="background: #d4edda; color: #155724; padding: 1.5rem; border-radius: 8px; margin-top: 1rem; border: 1px solid #c3e6cb; text-align: center;">
+            <h4 style="margin: 0 0 1rem 0; color: #155724;">✅ Thank you!</h4>
+            <p style="margin: 0;">Your message has been sent successfully. We will contact you soon.</p>
+        </div>
+        """
+        return HttpResponse(success_html)
+    else:
+        # Форма с ошибками
+        html = render_to_string('feedback_form_partial.html', {
+            'form': form
+        }, request=request)
+        return HttpResponse(html)
