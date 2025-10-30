@@ -164,7 +164,6 @@ class ExchangeView(CustomHtmxMixin, TemplateView):
         if page:
             context['page'] = page
             context['seo_previev'] = page.previev
-            context['banner'] = page.image
 
             context['seo_title'] = page.title
             context['seo_description'] = page.description
@@ -191,7 +190,6 @@ class AMLKYCView(CustomHtmxMixin, TemplateView):
         if page:
             context['page'] = page
             context['seo_previev'] = page.previev
-            context['banner'] = page.image
 
             context['seo_title'] = page.title
             context['seo_description'] = page.description
