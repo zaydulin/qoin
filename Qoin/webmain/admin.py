@@ -104,7 +104,7 @@ class HomePageAdmin(admin.ModelAdmin):
 
     fieldsets = (
         (None, {
-            'fields': ('previev', 'get_image_preview', 'title', 'description', 'propertytitle', 'propertydescription'),
+            'fields': ('preview', 'get_image_preview', 'title', 'description', 'propertytitle', 'propertydescription'),
         }),
         ('Слайд', {
             'fields': (
@@ -154,11 +154,13 @@ class AboutPageAdmin(admin.ModelAdmin):
     readonly_fields = ('get_image_previev',)
 
     def get_image_previev(self, obj):
-        return mark_safe(f'<img src="{obj.previev.url}" width="50">')
-    get_image_previev.short_description = "Логотип"
+        if obj.previev and obj.previev.url:
+            return mark_safe(f'<img src="{obj.previev.url}" width="50">')
+        return "Нет изображения"
+    get_image_previev.short_description = "Превью"
 
     def has_add_permission(self, request):
-        # Allow add if there are no HomePage objects in the database
+        # Allow add if there are no AboutPage objects in the database
         if not AboutPage.objects.exists():
             return True
         return False
@@ -184,29 +186,23 @@ class AboutPageAdmin(admin.ModelAdmin):
 
     fieldsets = (
         (None, {
-            'fields': ('banner','previev', 'get_image_previev', 'title', 'title_en',  'description', 'description_en', 'propertytitle','propertytitle_en', 'propertydescription','propertydescription_en',),
+            'fields': ('banner', 'previev', 'get_image_previev', 'title', 'description', 'propertytitle', 'propertydescription'),
         }),
         ('Первый блок', {
-            'fields': ('block_1_image', 'block_1_title', 'block_1_title_en', 'block_1_description', 'block_1_description_en'),
+            'fields': ('block_1_image', 'block_1_title', 'block_1_description'),
         }),
         ('Второй блок', {
-            'fields': ('block_2_image', 'block_2_h1', 'block_2_h1_en', 'block_2_title',  'block_2_title_en','block_2_description','block_2_description_en',
-                       'block_2_button_link', 'block_2_button_link_en', 'block_2_button_name', 'block_2_button_name_en'),
+            'fields': ('block_2_image', 'block_2_h1', 'block_2_title', 'block_2_description',
+                       'block_2_button_link', 'block_2_button_name'),
         }),
         ('Третий блок', {
-            'fields': ('block_3_h1', 'block_3_h1_en', 'block_3_title', 'block_3_title_en', 'block_3_description', 'block_3_description_en',
+            'fields': ('block_3_h1', 'block_3_title', 'block_3_description',
                        'block_3_image1', 'block_3_image1_title', 'block_3_image1_description',
-                       'block_3_image1_title_en', 'block_3_image1_description_en',
                        'block_3_image2', 'block_3_image2_title', 'block_3_image2_description',
-                       'block_3_image2_title_en', 'block_3_image2_description_en',
                        'block_3_image3', 'block_3_image3_title', 'block_3_image3_description',
-                       'block_3_image3_title_en', 'block_3_image3_description_en',
-                       'block_3_image4', 'block_3_image4_title', 'block_3_image4_description',
-                       'block_3_image4_title_en', 'block_3_image4_description_en',
-                       ),
+                       'block_3_image4', 'block_3_image4_title', 'block_3_image4_description'),
         }),
     )
-
 
 
 @admin.register(ContactPage)
