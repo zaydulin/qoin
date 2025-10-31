@@ -19,11 +19,11 @@
 <div class="body-wrapper"  id="content">
     <header class="header">
         <div class="container">
-            <div class="header__container"><a class="header__logo">
+            <div class="header__container"><a  href="{% url 'webmain:home' %}" hx-get="{% url 'webmain:home' %}" hx-target="#content-body" hx-push-url="true"  class="header__logo">
                 <picture>
                     <source media="(min-width: 743px)"
-                            srcset="{% static 'site/assets/img/logo-table.png' %}, {% static 'site/assets/img/logo-table@2x.png 2x' %}">
-                    <img src="{% static 'site/assets/img/logo.png' %}" srcset="{% static 'site/assets/img/logo@2x.png 2x' %}" alt="Logo" width="120"
+                            srcset="{% static 'site/assets/img/Qoin logo.svg' %}, {% static 'site/assets/img/Qoin logo.svg 2x' %}">
+                    <img src="{% static 'site/assets/img/Qoin logo.svg' %}" srcset="{% static 'site/assets/img/Qoin logo.svg 2x' %}" alt="Logo" width="120"
                          height="30"></picture>
             </a>
                 <nav class="header__nav main-nav">
@@ -48,9 +48,9 @@
     </main>
     <footer class="footer">
         <div class="container">
-            <div class="footer__container"><a class="footer__logo">
-                <img src="{% static 'site/assets/img/logo-footer.png' %}"
-                     srcset="{% static 'site/assets/img/logo-footer@2x.png 2x"
+            <div class="footer__container"><a  href="{% url 'webmain:home' %}" hx-get="{% url 'webmain:home' %}" hx-target="#content-body" hx-push-url="true" class="footer__logo">
+                <img src="{% static 'site/assets/img/Qoin logo.svg' %}"
+                     srcset="{% static 'site/assets/img/Qoin logo.svg 2x"
                      alt="logo" width="178" height="52"></a>
                 <ul class="footer__nav">
                     <li class="footer__nav-item">
@@ -59,36 +59,13 @@
                     <li class="footer__nav-item">
                         <a href="{% url 'webmain:about' %}" hx-get="{% url 'webmain:about' %}" hx-target="#content-body" hx-push-url="true"  class="footer__nav-link">About us</a>
                     </li>
-                    {% get_pages_by_type 1 as privacy_pages %}
-                    {% for page in privacy_pages %}
                     <li class="footer__nav-item">
-                        <a href="{% url 'webmain:page' page.slug %}"
-                           hx-get="{% url 'webmain:page' page.slug %}"
-                           hx-target="#content-body"
-                           hx-push-url="true"
-                           class="footer__nav-link">{{ page.name }}</a>
+                        <a href="{% url 'webmain:exchange' %}" hx-get="{% url 'webmain:exchange' %}" hx-target="#content-body" hx-push-url="true"  class="footer__nav-link">Exchange</a>
                     </li>
-                    {% endfor %}
-                    {% get_pages_by_type 2 as privacy_pages %}
-                    {% for page in privacy_pages %}
                     <li class="footer__nav-item">
-                        <a href="{% url 'webmain:page' page.slug %}"
-                           hx-get="{% url 'webmain:page' page.slug %}"
-                           hx-target="#content-body"
-                           hx-push-url="true"
-                           class="footer__nav-link">{{ page.name }}</a>
+                        <a href="{% url 'webmain:aml' %}" hx-get="{% url 'webmain:aml' %}" hx-target="#content-body" hx-push-url="true"  class="footer__nav-link">AML/KYC</a>
                     </li>
-                    {% endfor %}
-                    {% get_pages_by_type 3 as privacy_pages %}
-                    {% for page in privacy_pages %}
-                    <li class="footer__nav-item">
-                        <a href="{% url 'webmain:page' page.slug %}"
-                           hx-get="{% url 'webmain:page' page.slug %}"
-                           hx-target="#content-body"
-                           hx-push-url="true"
-                           class="footer__nav-link">{{ page.name }}</a>
-                    </li>
-                    {% endfor %}
+
                     <li class="footer__nav-item">
                         <a href="{% url 'webmain:contact' %}" hx-get="{% url 'webmain:contact' %}" hx-target="#content-body" hx-push-url="true"  class="footer__nav-link">Contacts</a>
                     </li>
