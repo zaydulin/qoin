@@ -237,5 +237,31 @@
         </ul>
     </div>
 </section>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const container = document.querySelector('.crypto-logos__container');
+    const logos = container.innerHTML;
+
+    // Дублируем контент
+    container.innerHTML = logos + logos;
+
+    // Настраиваем анимацию
+    const containerWidth = container.scrollWidth / 2;
+    const animationDuration = (containerWidth / 50) * 2; // Регулируйте скорость
+
+    // Создаем keyframes динамически
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-${containerWidth}px); }
+        }
+        .crypto-logos__container {
+            animation: marquee ${animationDuration}s linear infinite;
+        }
+    `;
+    document.head.appendChild(style);
+});
+</script>
 {% endblock content %}
 

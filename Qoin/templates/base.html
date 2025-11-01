@@ -153,7 +153,285 @@
 </div>
 {% block footer %}{% endblock footer %}
 <script src="{% static 'site/htmx.min.js' %}"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const promoSection = document.querySelector('.promo.promo--main');
+    const decorationElements = document.querySelectorAll('.promo__decoration > *');
 
+    if (!promoSection || !decorationElements.length) return;
+
+    // Добавляем перспективу для 3D эффекта
+    promoSection.style.perspective = '1000px';
+
+    promoSection.addEventListener('mousemove', function(e) {
+        const sectionRect = promoSection.getBoundingClientRect();
+        const mouseX = e.clientX - sectionRect.left;
+        const mouseY = e.clientY - sectionRect.top;
+
+        const centerX = sectionRect.width / 2;
+        const centerY = sectionRect.height / 2;
+
+        const distanceX = (mouseX - centerX) / centerX;
+        const distanceY = (mouseY - centerY) / centerY;
+
+        decorationElements.forEach((element, index) => {
+            // Интенсивность увеличивается с каждым элементом
+            const baseSpeed = 0.05;
+            const speed = baseSpeed + (index * 0.03);
+            const rotationPower = 8 + (index * 3);
+            const tiltPower = 5 + (index * 2);
+
+            // Смещение
+            const moveX = distanceX * speed * 120;
+            const moveY = distanceY * speed * 120;
+
+            // 3D вращение
+            const rotateY = distanceX * rotationPower;
+            const rotateX = -distanceY * rotationPower * 0.8;
+            const rotateZ = (distanceX * distanceY) * tiltPower;
+
+            // Дополнительные эффекты
+            const skewX = distanceY * 2;
+            const skewY = distanceX * 1.5;
+            const scale = 1 + (Math.abs(distanceX * distanceY) * 0.1);
+
+            // Параллакс с глубиной
+            const translateZ = index * 10 - (Math.abs(distanceX) * 20);
+
+            element.style.transform = `
+                translate3d(${moveX}px, ${moveY}px, ${translateZ}px)
+                rotateY(${rotateY}deg)
+                rotateX(${rotateX}deg)
+                rotateZ(${rotateZ}deg)
+                skew(${skewX}deg, ${skewY}deg)
+                scale(${scale})
+            `;
+
+            // Добавляем тень для усиления 3D эффекта
+            element.style.filter = `
+                drop-shadow(${-moveX * 0.1}px ${-moveY * 0.1}px 8px rgba(0,0,0,0.3))
+            `;
+
+            element.style.transition = 'all 0.12s ease-out';
+            element.style.transformStyle = 'preserve-3d';
+            element.style.willChange = 'transform, filter';
+        });
+    });
+
+    promoSection.addEventListener('mouseenter', function() {
+        decorationElements.forEach(element => {
+            element.style.transition = 'all 0.12s ease-out';
+        });
+    });
+
+    promoSection.addEventListener('mouseleave', function() {
+        decorationElements.forEach(element => {
+            element.style.transform = `
+                translate3d(0, 0, 0)
+                rotateY(0deg)
+                rotateX(0deg)
+                rotateZ(0deg)
+                skew(0deg, 0deg)
+                scale(1)
+            `;
+            element.style.filter = 'drop-shadow(0 0 0 rgba(0,0,0,0))';
+            element.style.transition = 'all 0.9s cubic-bezier(0.19, 1, 0.22, 1)';
+        });
+    });
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const menuButton = document.querySelector('.main-nav__button');
+    const existingMenu = document.querySelector('.main-nav__wrapper');
+
+    if (menuButton && existingMenu) {
+        menuButton.addEventListener('click', function() {
+            console.log('Кнопка нажата!');
+            createMenuPopup(existingMenu);
+        });
+    } else {
+        console.log('Кнопка не найдена или меню отсутствует!');
+    }
+});
+
+function createMenuPopup(existingMenu) {
+    if (document.querySelector('.menu-popup')) return;
+
+    const body = document.querySelector('body');
+
+    const popup = document.createElement('div');
+    popup.classList.add('menu-popup');
+
+    const popupContent = `
+        <div class="popup-content">
+            <button class="popup-close-btn" aria-label="Close menu">×</button>
+            <div class="popup-menu-wrapper"></div>
+        </div>
+    `;
+
+    popup.innerHTML = popupContent;
+    body.appendChild(popup);
+
+    // Клонируем существующее меню и меняем классы
+    const menuWrapper = popup.querySelector('.popup-menu-wrapper');
+    const clonedMenu = existingMenu.cloneNode(true);
+
+    // Меняем классы у элементов меню
+    clonedMenu.classList.remove('main-nav__wrapper');
+    clonedMenu.classList.add('popup-nav-wrapper');
+
+    const navList = clonedMenu.querySelector('.main-nav__list');
+    if (navList) {
+        navList.classList.remove('main-nav__list');
+        navList.classList.add('popup-nav-list');
+    }
+
+    const navItems = clonedMenu.querySelectorAll('.main-nav__item');
+    navItems.forEach(item => {
+        item.classList.remove('main-nav__item');
+        item.classList.add('popup-nav-item');
+    });
+
+    const navLinks = clonedMenu.querySelectorAll('.main-nav__link');
+    navLinks.forEach(link => {
+        link.classList.remove('main-nav__link');
+        link.classList.add('popup-nav-link');
+    });
+
+    menuWrapper.appendChild(clonedMenu);
+
+    // Закрытие попапа
+    const closeButton = popup.querySelector('.popup-close-btn');
+    closeButton.addEventListener('click', () => {
+        popup.remove();
+        body.style.overflow = 'auto';
+    });
+
+    popup.addEventListener('click', (e) => {
+        if (e.target === popup) {
+            popup.remove();
+            body.style.overflow = 'auto';
+        }
+    });
+
+    document.addEventListener('keydown', function closeOnEscape(e) {
+        if (e.key === 'Escape') {
+            popup.remove();
+            body.style.overflow = 'auto';
+            document.removeEventListener('keydown', closeOnEscape);
+        }
+    });
+
+    body.style.overflow = 'hidden';
+}
+</script>
+<style>
+    .menu-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.popup-content {
+    width: 300px;
+    height: 100%;
+    background: white;
+    padding: 60px 20px 20px 20px;
+    position: relative;
+    overflow-y: auto;
+}
+
+.popup-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1001;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+}
+
+/* Стили для меню в попапе */
+.popup-nav-wrapper {
+    margin-top: 20px;
+}
+
+.popup-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.popup-nav-item {
+    margin-bottom: 10px;
+}
+
+.popup-nav-link {
+    display: block;
+    padding: 12px 15px;
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    background: transparent;
+    border: none;
+    width: 100%;
+    text-align: left;
+}
+
+.popup-nav-link:hover {
+    background-color: #f5f5f5;
+    color: #000;
+}
+
+/* Активный状态 для ссылок */
+.popup-nav-link.active {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Анимации */
+.menu-popup {
+    animation: fadeIn 0.3s ease;
+}
+
+.popup-content {
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+    .popup-content {
+        width: 100%;
+        max-width: 280px;
+    }
+}
+</style>
 <script src="{% static 'site/assets/js/script.js' %}"></script>
 </body>
 </html>
