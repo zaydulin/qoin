@@ -69,6 +69,41 @@
                     <li class="footer__nav-item">
                         <a href="{% url 'webmain:contact' %}" hx-get="{% url 'webmain:contact' %}" hx-target="#content-body" hx-push-url="true"  class="footer__nav-link">Contacts</a>
                     </li>
+                    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Функция для обновления активных ссылок
+    function updateActiveLinks() {
+        // Удаляем активный класс у всех ссылок
+        document.querySelectorAll('.footer__nav-link').forEach(link => {
+            link.classList.remove('main-nav__link--active');
+        });
+
+        // Получаем текущий URL
+        const currentUrl = window.location.pathname;
+
+        // Добавляем активный класс к соответствующей ссылке
+        document.querySelectorAll('.footer__nav-link').forEach(link => {
+            const linkUrl = new URL(link.href).pathname;
+            if (linkUrl === currentUrl) {
+                link.classList.add('main-nav__link--active');
+            }
+        });
+    }
+
+    // Обновляем активные ссылки при загрузке страницы
+    updateActiveLinks();
+
+    // Обновляем активные ссылки после HTMX навигации
+    document.body.addEventListener('htmx:afterSwap', function(evt) {
+        updateActiveLinks();
+    });
+
+    // Обновляем активные ссылки при изменении истории браузера
+    window.addEventListener('popstate', function(evt) {
+        setTimeout(updateActiveLinks, 100);
+    });
+});
+</script>
                 </ul>
                 {% load static generals_tag i18n %}
 
