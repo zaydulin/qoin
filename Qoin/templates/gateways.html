@@ -1,0 +1,151 @@
+{% load static generals_tag %}
+{% block content %}
+<section class="promo promo--about">
+    <div class="promo__container container"><span class="promo__chip"><img src="{% static 'site/assets/img/icons/high-risk.svg' %}"
+                                                                           alt=""> High risk acquiring</span>
+        <h1 class="promo__heading heading heading--size-l">About us</h1>
+        <p class="promo__text">Qoin+ is a trusted payment acquiring provider delivering seamless, secure, and
+            scalable payment processing solutions for businesses across Europe and worldwide. Our advanced
+            technology and expertise help merchants accept payments online, in-store, and via mobile channels
+            with confidence and ease.</p></div>
+    <div class="promo__decoration"></div>
+</section>
+<section class="risk">
+    <div class="container">
+        <div class="risk__container"><h2 class="risk__heading heading heading--size-m">Compliance &
+            Regulation</h2>
+            <p class="risk__description">Multicurrency acquiring supports all types of payment cards and the
+                most popular cryptocurrencies (Bitcoin, Ethereum, etc.)</p>
+            <ul class="risk__list">
+                <li class="risk__item"><img class="risk__item-icon" src="{% static 'site/assets/img/icons/legal.svg' %}" alt=""
+                                            width="48" height="48">
+                    <h3 class="risk__item-name heading heading--size-s">PCI DSS Level 1 Certified</h3>
+                    <p class="risk__item-text">We meet the highest industry standards for protecting cardholder
+                        data, verified through independent annual audits.</p></li>
+                <li class="risk__item"><img class="risk__item-icon" src="{% static 'site/assets/img/icons/licensed.svg' %}" alt=""
+                                            width="48" height="48">
+                    <h3 class="risk__item-name heading heading--size-s">Licensed VASP in Poland</h3>
+                    <p class="risk__item-text">Holding a full operational license and all required regulatory
+                        attestations.</p></li>
+                <li class="risk__item"><img class="risk__item-icon" src="{% static 'site/assets/img/icons/european.svg' %}" alt=""
+                                            width="48" height="48">
+                    <h3 class="risk__item-name">European Compliance</h3>
+                    <p class="risk__item-text">Fully aligned with PSD2, AML/CTF regulations, GDPR, and broader
+                        European financial legislation.</p></li>
+                <li class="risk__item"><img class="risk__item-icon" src="{% static 'site/assets/img/icons/transparency.svg' %}"
+                                            alt="" width="48" height="48">
+                    <h3 class="risk__item-name heading heading--size-s">Transparency</h3>
+                    <p class="risk__item-text">Subject to regular audits and providing full documentation for
+                        partners and regulators.</p></li>
+            </ul>
+        </div>
+    </div>
+</section>
+<section class="mission">
+    <div class="mission__container container"><h2 class="mission__heading heading heading--size-m">Our Mission &
+        Values</h2>
+        <div class="mission__text"><p>Our mission is to simplify payments and enable growth for merchants by
+            offering reliable, compliant, and high-performance acquiring solutions.</p>
+            <p>Our vision is to become the most trusted payments infrastructure across Europe, helping
+                businesses expand globally while meeting the strictest compliance standards.</p></div>
+        <div class="mission__bg"></div>
+    </div>
+</section>
+<div class="risk-form" id="form-home">
+    <form class="container"
+          hx-post="{% url 'webmain:high_risk_request' %}"
+          hx-target="#form-result"
+          hx-swap="innerHTML"
+          hx-indicator="#form-indicator"
+          hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+
+        {% csrf_token %}
+
+        <div class="risk-form__container">
+            <h2 class="risk-form__heading heading heading--size-m">
+                Leave a request for connection to High Risk acquiring
+            </h2>
+
+            <p class="risk-form__description">
+                Our experts will contact you as soon as possible and advise on the terms of connection
+            </p>
+
+            <div class="risk-form__wrapper">
+                {% if form %}
+                <!-- Показываем форму с ошибками -->
+                <div class="risk-form__input input">
+                    <input type="text"
+                           name="name"
+                           placeholder="Your name"
+                           value="{{ form.name.value|default:'' }}"
+                           class="{% if form.name.errors %}error{% endif %}">
+                    {% if form.name.errors %}
+                    <div class="error-message">{{ form.name.errors.0 }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="risk-form__input input">
+                    <input type="text"
+                           name="contact"
+                           placeholder="Your contact"
+                           value="{{ form.contact.value|default:'' }}"
+                           class="{% if form.contact.errors %}error{% endif %}">
+                    {% if form.contact.errors %}
+                    <div class="error-message">{{ form.contact.errors.0 }}</div>
+                    {% endif %}
+                </div>
+                {% else %}
+                <!-- Изначальная форма -->
+                <div class="risk-form__input input">
+                    <input type="text" name="name" placeholder="Your name" required>
+                </div>
+
+                <div class="risk-form__input input">
+                    <input type="text" name="contact" placeholder="Your contact" required>
+                </div>
+                {% endif %}
+
+                <button class="risk-form__button btn-submit" type="submit">
+                    <span>Send</span>
+                    <div id="form-indicator" class="htmx-indicator">
+                        <span>Sending...</span>
+                    </div>
+                </button>
+            </div>
+
+            <!-- Контейнер для результата (сообщения об успехе/ошибке) -->
+            <div id="form-result"></div>
+        </div>
+    </form>
+
+    <!-- Стили для индикатора загрузки и ошибок -->
+    <style>
+        .htmx-indicator {
+            display: none;
+        }
+        .htmx-request .htmx-indicator {
+            display: inline;
+        }
+        .htmx-request .btn-submit span:first-child {
+            display: none;
+        }
+        .error-message {
+            color: #ff4444;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        .risk-form__input.input {
+            position: relative;
+        }
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border: 1px solid #c3e6cb;
+            text-align: center;
+        }
+    </style>
+</div>{% endblock content %}
+

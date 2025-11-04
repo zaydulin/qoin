@@ -48,6 +48,15 @@
             </a>
         </li>
         <li class="main-nav__item">
+            <a href="{% url 'webmain:gateways' %}"
+               hx-get="{% url 'webmain:gateways' %}"
+               hx-target="#content-body"
+               hx-push-url="true"
+               class="main-nav__link {% if request.resolver_match.url_name == 'gateways' %}main-nav__link--active{% endif %}">
+                Gateways
+            </a>
+        </li>
+        <li class="main-nav__item">
             <a href="{% url 'webmain:exchange' %}"
                hx-get="{% url 'webmain:exchange' %}"
                hx-target="#content-body"

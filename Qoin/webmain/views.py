@@ -125,6 +125,29 @@ class AboutView(CustomHtmxMixin, TemplateView):
             context['seo_propertydescription'] = None
         return context
 
+class GatewaysView(CustomHtmxMixin, TemplateView):
+    template_name = 'gateways.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        page = AboutPage.objects.first()
+        if page:
+            context['page'] = page
+            context['seo_previev'] = page.previev
+            context['banner'] = page.banner
+            context['seo_title'] = page.title
+            context['seo_description'] = page.description
+            context['seo_propertytitle'] = page.propertytitle
+            context['seo_propertydescription'] = page.propertydescription
+        else:
+            context['page'] = None
+            context['seo_previev'] = None
+            context['seo_title'] = None
+            context['seo_description'] = None
+            context['seo_propertytitle'] = None
+            context['seo_propertydescription'] = None
+        return context
+
 class ContactView(CustomHtmxMixin, TemplateView):
     template_name = 'contact.html'
 
