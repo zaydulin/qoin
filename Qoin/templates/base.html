@@ -29,12 +29,85 @@
                 <nav class="header__nav main-nav">
                     <div class="main-nav__wrapper">
                         <ul class="main-nav__list">
-                            <li class="main-nav__item"><a href="{% url 'webmain:home' %}" hx-get="{% url 'webmain:home' %}" hx-target="#content-body" hx-push-url="true" class="main-nav__link ">Home</a></li>
-                            <li class="main-nav__item"><a href="{% url 'webmain:about' %}" hx-get="{% url 'webmain:about' %}" hx-target="#content-body" hx-push-url="true" class="main-nav__link ">About us</a></li>
-                            <li class="main-nav__item"><a href="{% url 'webmain:exchange' %}" hx-get="{% url 'webmain:exchange' %}" hx-target="#content-body" hx-push-url="true" class="main-nav__link ">Exchange</a></li>
-                            <li class="main-nav__item"><a href="{% url 'webmain:aml' %}" hx-get="{% url 'webmain:aml' %}" hx-target="#content-body" hx-push-url="true" class="main-nav__link ">AML/KYC</a></li>
-                            <li class="main-nav__item"><a href="{% url 'webmain:contact' %}" hx-get="{% url 'webmain:contact' %}" hx-target="#content-body" hx-push-url="true" class="main-nav__link ">Contacts</a></li>
-                        </ul>
+<li class="main-nav__item">
+            <a href="{% url 'webmain:home' %}"
+               hx-get="{% url 'webmain:home' %}"
+               hx-target="#content-body"
+               hx-push-url="true"
+               class="main-nav__link {% if request.resolver_match.url_name == 'home' %}main-nav__link--active{% endif %}">
+                Home
+            </a>
+        </li>
+        <li class="main-nav__item">
+            <a href="{% url 'webmain:about' %}"
+               hx-get="{% url 'webmain:about' %}"
+               hx-target="#content-body"
+               hx-push-url="true"
+               class="main-nav__link {% if request.resolver_match.url_name == 'about' %}main-nav__link--active{% endif %}">
+                About us
+            </a>
+        </li>
+        <li class="main-nav__item">
+            <a href="{% url 'webmain:exchange' %}"
+               hx-get="{% url 'webmain:exchange' %}"
+               hx-target="#content-body"
+               hx-push-url="true"
+               class="main-nav__link {% if request.resolver_match.url_name == 'exchange' %}main-nav__link--active{% endif %}">
+                Exchange
+            </a>
+        </li>
+        <li class="main-nav__item">
+            <a href="{% url 'webmain:aml' %}"
+               hx-get="{% url 'webmain:aml' %}"
+               hx-target="#content-body"
+               hx-push-url="true"
+               class="main-nav__link {% if request.resolver_match.url_name == 'aml' %}main-nav__link--active{% endif %}">
+                AML/KYC
+            </a>
+        </li>
+        <li class="main-nav__item">
+            <a href="{% url 'webmain:contact' %}"
+               hx-get="{% url 'webmain:contact' %}"
+               hx-target="#content-body"
+               hx-push-url="true"
+               class="main-nav__link {% if request.resolver_match.url_name == 'contact' %}main-nav__link--active{% endif %}">
+                Contacts
+            </a>
+        </li>
+
+<script>
+// JavaScript для обновления активного класса после HTMX загрузки
+document.addEventListener('DOMContentLoaded', function() {
+    function updateActiveNav() {
+        // Убираем активный класс у всех ссылок
+        document.querySelectorAll('.main-nav__link').forEach(link => {
+            link.classList.remove('main-nav__link--active');
+        });
+
+        // Добавляем активный класс к текущей странице
+        const currentPath = window.location.pathname;
+        document.querySelectorAll('.main-nav__link').forEach(link => {
+            if (link.getAttribute('href') === currentPath) {
+                link.classList.add('main-nav__link--active');
+            }
+        });
+    }
+
+    // Обновляем при загрузке страницы
+    updateActiveNav();
+
+    // Обновляем после HTMX навигации
+    document.body.addEventListener('htmx:afterSwap', function(evt) {
+        updateActiveNav();
+    });
+
+    // Обновляем при изменении истории браузера
+    window.addEventListener('popstate', function() {
+        setTimeout(updateActiveNav, 100);
+    });
+});
+</script>
+</ul>
                     </div>
                     <button class="main-nav__button" aria-label="Open menu"><span></span> <span></span> <span></span>
                     </button>
@@ -69,41 +142,6 @@
                     <li class="footer__nav-item">
                         <a href="{% url 'webmain:contact' %}" hx-get="{% url 'webmain:contact' %}" hx-target="#content-body" hx-push-url="true"  class="footer__nav-link">Contacts</a>
                     </li>
-                    <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Функция для обновления активных ссылок
-    function updateActiveLinks() {
-        // Удаляем активный класс у всех ссылок
-        document.querySelectorAll('.footer__nav-link').forEach(link => {
-            link.classList.remove('main-nav__link--active');
-        });
-
-        // Получаем текущий URL
-        const currentUrl = window.location.pathname;
-
-        // Добавляем активный класс к соответствующей ссылке
-        document.querySelectorAll('.footer__nav-link').forEach(link => {
-            const linkUrl = new URL(link.href).pathname;
-            if (linkUrl === currentUrl) {
-                link.classList.add('main-nav__link--active');
-            }
-        });
-    }
-
-    // Обновляем активные ссылки при загрузке страницы
-    updateActiveLinks();
-
-    // Обновляем активные ссылки после HTMX навигации
-    document.body.addEventListener('htmx:afterSwap', function(evt) {
-        updateActiveLinks();
-    });
-
-    // Обновляем активные ссылки при изменении истории браузера
-    window.addEventListener('popstate', function(evt) {
-        setTimeout(updateActiveLinks, 100);
-    });
-});
-</script>
                 </ul>
                 {% load static generals_tag i18n %}
 
